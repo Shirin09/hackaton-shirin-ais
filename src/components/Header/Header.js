@@ -3,7 +3,17 @@ import Logo from "../../assets/img/logo.png";
 import CartIcon from "../../assets/img/cart-icon.png";
 import "./Header.css";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+
 const Header = () => {
+
+
+  const {
+    handleLogout,
+    user: { email },
+  } = useAuth();
+  console.log({ email });
+
   return (
     <header>
       <div className="container">
@@ -22,6 +32,29 @@ const Header = () => {
             <li>
               <input type="text" placeholder="search..." />
             </li>
+            <li>
+            
+
+                {email ? (
+            <Link to="/auth">
+              <button
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </Link>
+          ) : null}
+
+          {email ? null : (
+            <Link to="/auth">
+              <button>
+                Login
+              </button>
+            </Link>
+          )}
+              
+            </li>
+
           </ul>
         </div>
       </div>
