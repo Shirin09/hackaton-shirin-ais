@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { productsContext } from "../../context/ProductContext";
+import ProductCard from "./ProductCard";
 
 const Products = () => {
-  return <div>Products</div>;
+  const { getPaintings, paintings } = useContext(productsContext);
+
+  useEffect(() => {
+    getPaintings();
+  }, []);
+
+  return (
+    <div>
+      {paintings.map((item) => (
+        <ProductCard key={item.id} item={item} />
+      ))}
+    </div>
+  );
 };
 
 export default Products;

@@ -1,0 +1,25 @@
+{
+  "paintings": [
+    {
+      "image": "asd",
+      "name": "asd",
+      "artistsName": "asd",
+      "price": "asd",
+      "id": 1
+    },
+    {
+      "image": "asd",
+      "name": "asd",
+      "artistsName": "asd",
+      "price": "asd",
+      "id": 2
+    },
+    {
+      "image": "asdasd",
+      "name": "sadasd",
+      "artistsName": "dasdas",
+      "price": "asdasd",
+      "id": 3
+    }
+  ]
+}
