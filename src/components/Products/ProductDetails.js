@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 import { productsContext } from "../../context/ProductContext";
 import "./ProductCard.css";
 
@@ -12,7 +13,6 @@ const ProductDetails = () => {
     getPaintingDetails(params);
   }, []);
 
-  console.log(params);
 
   function handleSave(){
       getData(paintingDetails, params)
@@ -20,6 +20,15 @@ const ProductDetails = () => {
   function handleDelete(){
       deletePainting(params)
   }
+
+  const {
+    handleLogout,
+    user: { email },
+    admin,
+  } = useAuth();
+  console.log({ email });
+  console.log(admin);
+  
   return (
     <div>
       {paintingDetails.name ? (
@@ -35,12 +44,13 @@ const ProductDetails = () => {
                     <p>{paintingDetails.name}</p>
                     <div>{paintingDetails.description}</div>
                     <div>{paintingDetails.price}</div>
+                    {admin ? <>
                     <Link to="/">
                     <button onClick={handleDelete}>delete</button>
                     </Link>
                     <Link to="/edit">
                     <button onClick={handleSave}>edit</button>
-                    </Link>
+                    </Link> </> : null}
                 </div>
             </div>
             </div>
