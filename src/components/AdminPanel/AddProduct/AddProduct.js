@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { productsContext } from "../../context/ProductContext";
+import { productsContext } from "../../../context/ProductContext";
 import axios from "axios";
 
 const AddProduct = () => {
@@ -9,6 +9,7 @@ const AddProduct = () => {
   const [name, setName] = useState("");
   const [artistsName, setArtistsName] = useState("");
   const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("")
 
   function handleAdd() {
     const product = {
@@ -16,6 +17,7 @@ const AddProduct = () => {
       name,
       artistsName,
       price,
+      description
     };
     addPaintings(product);
   }
@@ -42,6 +44,11 @@ const AddProduct = () => {
           type="text"
           placeholder="price"
           onChange={(e) => setPrice(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="description"
+          onChange={(e) => setDescription(e.target.value)}
         />
         <button onClick={handleAdd}>Add</button>
       </form>

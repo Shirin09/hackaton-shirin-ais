@@ -117,3 +117,32 @@ span {
 .product-price-btn button:hover {
   background-color: #15703e8c;
 }
+
+.details-wrapper{
+  padding-top: 10vh;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100vw;
+}
+.content{
+  display: flex;
+  /* justify-content: space-evenly; */
+  flex-wrap: wrap;
+}
+.content-left{
+  width: 60%;
+  
+}
+.content-left img{
+  width: 100%;
+
+}
+.content-right{
+  width: 40%;
+  padding: 30px;
+  box-sizing: border-box;
+}
+.container{
+  max-width: 1100px;
+  margin: 0 auto;
+}
