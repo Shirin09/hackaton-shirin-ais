@@ -57,6 +57,9 @@
   text-align: right;
   cursor: pointer;
 }
+.authP p {
+  font-size: 16px;
+}
 .authSpan {
   color: #045e18;
   font-weight: 500;

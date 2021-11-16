@@ -19,7 +19,7 @@ const Login = () => {
     <>
       <section className="login">
         <div className="loginContainer">
-          <label className="authLabel">UserName</label>
+          <label className="authLabel">User name</label>
           <input
             className="authInput"
             autoFocus
