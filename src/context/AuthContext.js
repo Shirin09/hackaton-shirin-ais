@@ -1,13 +1,18 @@
+import { getDefaultNormalizer } from "@testing-library/dom";
 import React, { createContext, useContext, useState, useEffect } from "react";
 import fire from "../fire";
 
 export const authContext = createContext();
+
+const admins = ["shirin@gmail.com", "ais@gmail.com"];
 
 export const useAuth = () => {
   return useContext(authContext);
 };
 
 const AuthContextProvider = ({ children }) => {
+  const [admin, setAdmin] = useState(false);
+
   const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -42,6 +47,12 @@ const AuthContextProvider = ({ children }) => {
             break;
         }
       });
+
+    for (let adminEmail of admins) {
+      if (adminEmail == user.email) {
+        setAdmin(true);
+      }
+    }
   };
 
   const handleSignUp = () => {
@@ -82,6 +93,7 @@ const AuthContextProvider = ({ children }) => {
   }, []);
 
   const values = {
+    admin,
     email,
     user,
     handleLogout,
