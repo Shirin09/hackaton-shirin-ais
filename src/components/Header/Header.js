@@ -9,6 +9,7 @@ const Header = () => {
   const {
     handleLogout,
     user: { email },
+    admin,
   } = useAuth();
   console.log({ email });
 
@@ -26,9 +27,11 @@ const Header = () => {
               <li>Home</li>
             </Link>
             <li>Artists</li>
-            <Link to="/add">
-              <li>Add Painting</li>
-            </Link>
+            {admin ? (
+              <Link to="/add">
+                <li>Add Painting</li>
+              </Link>
+            ) : null}
             <li>
               <img src={CartIcon} alt="cart" />
             </li>
