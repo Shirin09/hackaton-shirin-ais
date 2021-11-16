@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 const Header = () => {
-
-
   const {
     handleLogout,
     user: { email },
@@ -24,8 +22,13 @@ const Header = () => {
             </Link>
           </div>
           <ul className="navbar__right">
-            <li>Home</li>
+            <Link to="/">
+              <li>Home</li>
+            </Link>
             <li>Artists</li>
+            <Link to="/add">
+              <li>Add Painting</li>
+            </Link>
             <li>
               <img src={CartIcon} alt="cart" />
             </li>
@@ -33,28 +36,18 @@ const Header = () => {
               <input type="text" placeholder="search..." />
             </li>
             <li>
-            
+              {email ? (
+                <Link to="/auth">
+                  <button onClick={handleLogout}>Logout</button>
+                </Link>
+              ) : null}
 
-                {email ? (
-            <Link to="/auth">
-              <button
-                onClick={handleLogout}
-              >
-                Logout
-              </button>
-            </Link>
-          ) : null}
-
-          {email ? null : (
-            <Link to="/auth">
-              <button>
-                Login
-              </button>
-            </Link>
-          )}
-              
+              {email ? null : (
+                <Link to="/auth">
+                  <button>Login</button>
+                </Link>
+              )}
             </li>
-
           </ul>
         </div>
       </div>

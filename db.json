@@ -1,25 +1,46 @@
 {
   "paintings": [
     {
-      "image": "asd",
-      "name": "asd",
-      "artistsName": "asd",
-      "price": "asd",
-      "id": 1
+      "image": "https://cdn.shopify.com/s/files/1/2011/8561/products/BABootsCorner_Cheltenham_1024x1024@2x.jpg?v=1585568629",
+      "name": "Boots Corner, Cheltenham",
+      "artistsName": "Baizak Alybaev",
+      "price": "456",
+      "id": 4
     },
     {
-      "image": "asd",
-      "name": "asd",
-      "artistsName": "asd",
-      "price": "asd",
-      "id": 2
+      "image": "https://cdn.shopify.com/s/files/1/2011/8561/products/Promenade_Cheltenham_The_Flower_Man_s_Beautiful_Blooms_1024x1024@2x.jpg?v=1555508710",
+      "name": "Promenade Cheltenham 'The Flower Man's Beautiful Blooms In The Rain'",
+      "artistsName": "Baizak",
+      "price": "595",
+      "id": 5
     },
     {
-      "image": "asdasd",
-      "name": "sadasd",
-      "artistsName": "dasdas",
-      "price": "asdasd",
-      "id": 3
+      "image": "https://cdn.shopify.com/s/files/1/2011/8561/products/Montpellier_Cheltenham_Dry_Out_in_the_Winw_Bar_530x@2x.jpg?v=1555508355",
+      "name": "Montpellier Cheltenham 'Dry Out in the Wine Bar?'",
+      "artistsName": "Baizak",
+      "price": "595",
+      "id": 6
+    },
+    {
+      "image": "https://cdn.shopify.com/s/files/1/2011/8561/products/Baizak_Montpellier_Cheltenham_530x@2x.jpg?v=1549631866",
+      "name": "Montpellier, Cheltenham",
+      "artistsName": "Baizak",
+      "price": "595",
+      "id": 7
+    },
+    {
+      "image": "https://cdn.shopify.com/s/files/1/2011/8561/products/Baizak_The_Flower_Man_530x@2x.jpg?v=1549631789",
+      "name": "The flower man ",
+      "artistsName": "Baizak",
+      "price": "595",
+      "id": 8
+    },
+    {
+      "image": "https://cdn.shopify.com/s/files/1/2011/8561/products/Baizak_The_Rotunda_Montpellier_530x@2x.jpg?v=1549631084",
+      "name": "sdfsdf",
+      "artistsName": "sdfsdf",
+      "price": "545",
+      "id": 9
     }
   ]
 }

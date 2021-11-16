@@ -10,7 +10,7 @@ const Products = () => {
   }, []);
 
   return (
-    <div>
+    <div className="card-wrapper">
       {paintings.map((item) => (
         <ProductCard key={item.id} item={item} />
       ))}
