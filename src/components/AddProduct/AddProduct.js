@@ -22,27 +22,29 @@ const AddProduct = () => {
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="image"
-        onChange={(e) => setImage(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="paintings name"
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="artist name"
-        onChange={(e) => setArtistsName(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="price"
-        onChange={(e) => setPrice(e.target.value)}
-      />
-      <button onClick={handleAdd}>Add</button>
+      <form action="">
+        <input
+          type="text"
+          placeholder="image"
+          onChange={(e) => setImage(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="paintings name"
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="artist name"
+          onChange={(e) => setArtistsName(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="price"
+          onChange={(e) => setPrice(e.target.value)}
+        />
+        <button onClick={handleAdd}>Add</button>
+      </form>
     </div>
   );
 };

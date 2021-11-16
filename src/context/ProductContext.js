@@ -19,7 +19,7 @@ const ProductsContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
   const getPaintings = async () => {
-    const { data } = await axios(`http://localhost:8003/paintings`);
+    const { data } = await axios(`http://localhost:8000/paintings`);
     dispatch({
       type: "GET_PAINTINGS",
       payload: data,
@@ -27,7 +27,7 @@ const ProductsContextProvider = ({ children }) => {
   };
 
   async function addPaintings(product) {
-    await axios.post(`http://localhost:8003/paintings`, product);
+    await axios.post(`http://localhost:8000/paintings`, product);
     getPaintings();
   }
 
