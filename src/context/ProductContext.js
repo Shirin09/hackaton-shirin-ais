@@ -23,8 +23,8 @@ const ProductsContextProvider = ({ children }) => {
   const [data, setData] = useState({});
   const [dataId, setDataId] = useState();
 
-  const getPaintings = async () => {
-    const { data } = await axios(`http://localhost:8000/paintings`);
+  const getPaintings = async (params="") => { //history
+    const { data } = await axios(`http://localhost:8000/paintings/?${params}`);
     dispatch({
       type: "GET_PAINTINGS",
       payload: data,

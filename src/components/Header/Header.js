@@ -1,17 +1,33 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Logo from "../../assets/img/logo.png";
 import CartIcon from "../../assets/img/cart-icon.png";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import history from "../../helpers/history";
+import { productsContext } from "../../context/ProductContext";
 
 const Header = () => {
+  const [cardValue, setCardValue ] = useState();
+
+  //history
+  const {getPaintings} =useContext(productsContext)
+
   const {
     handleLogout,
     user: { email },
     admin,
   } = useAuth();
   console.log({ email });
+  console.log(admin);
+
+  function handleValue(e){
+    const search = new URLSearchParams(history.location.params)
+    search.set("q", e.target.value)
+    history.push(`${history.location.pathname}?${search.toString()}`)
+    setCardValue(e.target.value)
+    getPaintings(search.toString())
+  }
 
   return (
     <header>
@@ -36,7 +52,7 @@ const Header = () => {
               <img src={CartIcon} alt="cart" />
             </li>
             <li>
-              <input type="text" placeholder="search..." />
+              <input onChange={handleValue} type="text" placeholder="search..." />
             </li>
             <li>
               {email ? (
