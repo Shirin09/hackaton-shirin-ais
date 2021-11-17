@@ -1,49 +1,47 @@
 import React, { useState, useContext, useEffect } from "react";
 import { productsContext } from "../../context/ProductContext";
 import ProductCard from "./ProductCard";
-import ReactPaginate from 'react-paginate'
-
+import ReactPaginate from "react-paginate";
 
 const Products = () => {
   const { getPaintings, paintings } = useContext(productsContext);
 
-  const [page, setPage] = useState(0)
+  const [page, setPage] = useState(0);
 
-  const pageCount = Math.ceil(paintings.length / 4)
+  const pageCount = Math.ceil(paintings.length / 4);
 
   useEffect(() => {
     getPaintings();
   }, []);
 
   function changePage({ selected }) {
-    setPage(selected)
+    setPage(selected);
   }
 
-  const productsPerPage = 4
+  const productsPerPage = 4;
 
-  const pageVisited = page * productsPerPage
+  const pageVisited = page * productsPerPage;
 
   const displayProducts = paintings
     .slice(pageVisited, pageVisited + productsPerPage)
-    .map((item) => <ProductCard key={item.id} item={item} />)
+    .map((item) => <ProductCard key={item.id} item={item} />);
 
   return (
-
     <div className="card-wrapper">
       {displayProducts}
       <ReactPaginate
-        previousLabel={'<'}
-        nextLabel={'>'}
+        previousLabel={"<"}
+        nextLabel={">"}
         pageCount={pageCount}
         onPageChange={changePage}
-        containerClassName={'paginationBttns'}
-        previousLinkClassName={'previousBttn'}
-        nextLinkClassName={'nextBttn'}
-        disabledClassName={'paginationDisabled'}
-        activeClassName={'paginationActive'}
+        containerClassName={"paginationBttns"}
+        previousLinkClassName={"previousBttn"}
+        nextLinkClassName={"nextBttn"}
+        disabledClassName={"paginationDisabled"}
+        activeClassName={"paginationActive"}
       />
     </div>
-    );
-  };
-  
-  export default Products;
+  );
+};
+
+export default Products;

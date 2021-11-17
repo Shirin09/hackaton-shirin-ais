@@ -7,7 +7,7 @@ import Home from "./components/Home/Home";
 import ProductDetails from "./components/Products/ProductDetails";
 import AuthContextProvider from "./context/AuthContext";
 import ProductsContextProvider from "./context/ProductContext";
-import EditProducts from "./components/AdminPanel/EditProducts/EditProducts"
+import EditProducts from "./components/AdminPanel/EditProducts/EditProducts";
 
 const MainRoutes = () => {
   return (
@@ -21,7 +21,6 @@ const MainRoutes = () => {
             <Route path="/add" element={<AddProduct />} />
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/edit" element={<EditProducts />} />
-
           </Routes>
         </BrowserRouter>
       </AuthContextProvider>
