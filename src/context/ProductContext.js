@@ -52,6 +52,9 @@ const ProductsContextProvider = ({ children }) => {
     await axios.patch(`http://localhost:8000/paintings/${dataId}`, obj);
     getPaintings();
   }
+
+
+  
   return (
     <productsContext.Provider
       value={{
