@@ -1,10 +1,17 @@
 import React, { createContext, useReducer, useState } from "react";
 import axios from "axios";
+import {
+  calcSubPrice,
+  calcTotalPrice,
+  getCountProductsInCart,
+} from "../helpers/cartFunctions";
 export const productsContext = createContext();
 
 const INIT_STATE = {
   paintings: [],
   paintingDetails: {},
+  cartLength: getCountProductsInCart(),
+  cart: {},
 };
 
 const reducer = (state = INIT_STATE, action) => {
@@ -13,6 +20,10 @@ const reducer = (state = INIT_STATE, action) => {
       return { ...state, paintings: action.payload };
     case "GET_PAINTING_DETAILS":
       return { ...state, paintingDetails: action.payload };
+    case "CHANGE_CART_COUNT":
+      return { ...state, cartLength: action.payload };
+    case "GET_CART":
+      return { ...state, cart: action.payload };
     default:
       return state;
   }
@@ -23,7 +34,8 @@ const ProductsContextProvider = ({ children }) => {
   const [data, setData] = useState({});
   const [dataId, setDataId] = useState();
 
-  const getPaintings = async (params="") => { //history
+  const getPaintings = async (params = "") => {
+    //history
     const { data } = await axios(`http://localhost:8000/paintings/?${params}`);
     dispatch({
       type: "GET_PAINTINGS",
@@ -53,20 +65,82 @@ const ProductsContextProvider = ({ children }) => {
     getPaintings();
   }
 
+  const addProductToCart = (product) => {
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    if (!cart) {
+      cart = {
+        products: [],
+        totalPrice: 0,
+      };
+    }
+    let newProduct = {
+      item: product,
+      count: 1,
+      subPrice: 0,
+    };
+    let filteredCart = cart.products.filter(
+      (elem) => elem.item.id === product.id
+    );
+    if (filteredCart.length > 0) {
+      cart.products = cart.products.filter(
+        (elem) => elem.item.id !== product.id
+      );
+    } else {
+      cart.products.push(newProduct);
+    }
+    newProduct.subPrice = calcSubPrice(newProduct);
+    cart.totalPrice = calcTotalPrice(cart.products);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    dispatch({
+      type: "CHANGE_CART_COUNT",
+      payload: cart.products.length,
+    });
+  };
 
-  
+  const getCart = () => {
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    if (!cart) {
+      cart = {
+        products: [],
+        totalPrice: 0,
+      };
+    }
+    dispatch({
+      type: "GET_CART",
+      payload: cart,
+    });
+  };
+
+  function changeProductCount(count, id) {
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    cart.products = cart.products.map((elem) => {
+      if (elem.item.id === id) {
+        elem.count = count;
+        elem.subPrice = calcSubPrice(elem);
+      }
+      return elem;
+    });
+    cart.totalPrice = calcTotalPrice(cart.products);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    getCart();
+  }
+
   return (
     <productsContext.Provider
       value={{
         paintings: state.paintings,
         paintingDetails: state.paintingDetails,
         data,
+        cart: state.cart,
         getPaintings,
         addPaintings,
         getPaintingDetails,
         getData,
         editPaintingDetails,
         deletePainting,
+        addProductToCart,
+        changeProductCount,
+        getCart,
       }}
     >
       {children}

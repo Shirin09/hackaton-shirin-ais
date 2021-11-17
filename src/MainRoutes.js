@@ -8,6 +8,7 @@ import ProductDetails from "./components/Products/ProductDetails";
 import AuthContextProvider from "./context/AuthContext";
 import ProductsContextProvider from "./context/ProductContext";
 import EditProducts from "./components/AdminPanel/EditProducts/EditProducts"
+import Cart from "./components/Cart/Cart";
 
 const MainRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const MainRoutes = () => {
             <Route path="/add" element={<AddProduct />} />
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/edit" element={<EditProducts />} />
+            <Route path="/cart" element={<Cart />} />
 
           </Routes>
         </BrowserRouter>
