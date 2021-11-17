@@ -1,4 +1,3 @@
-import { getDefaultNormalizer } from "@testing-library/dom";
 import React, { createContext, useContext, useState, useEffect } from "react";
 import fire from "../fire";
 
@@ -49,7 +48,7 @@ const AuthContextProvider = ({ children }) => {
       });
 
     for (let adminEmail of admins) {
-      if (adminEmail == user.email) {
+      if (adminEmail == email) {
         setAdmin(true);
       }
     }
@@ -91,6 +90,8 @@ const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     authListener();
   }, []);
+
+
 
   const values = {
     admin,
