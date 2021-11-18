@@ -46,12 +46,6 @@ const AuthContextProvider = ({ children }) => {
             break;
         }
       });
-
-    for (let adminEmail of admins) {
-      if (adminEmail == email) {
-        setAdmin(true);
-      }
-    }
   };
 
   const handleSignUp = () => {
@@ -74,6 +68,7 @@ const AuthContextProvider = ({ children }) => {
 
   const handleLogout = () => {
     fire.auth().signOut();
+    setAdmin(false);
   };
 
   const authListener = () => {
@@ -81,6 +76,11 @@ const AuthContextProvider = ({ children }) => {
       if (user) {
         clearInputs();
         setUser(user);
+        for (let adminEmail of admins) {
+          if (adminEmail === user.email) {
+            setAdmin(true);
+          }
+        }
       } else {
         setUser("");
       }
@@ -90,8 +90,6 @@ const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     authListener();
   }, []);
-
-
 
   const values = {
     admin,
