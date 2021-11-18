@@ -39,26 +39,27 @@ const Header = () => {
             </Link>
           </div>
           <ul className="navbar__right">
-            <Link to="/">
-              <li>Home</li>
-            </Link>
-            <li>Artists</li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
             {admin ? (
-              <Link to="/add">
-                <li>Add Painting</li>
-              </Link>
+              <li>
+                <Link to="/add">Add Painting</Link>
+              </li>
             ) : null}
             <li>
-              <img src={CartIcon} alt="cart" />
+              <Link to="/cart">
+                <img src={CartIcon} alt="cart" />
+              </Link>
             </li>
-            <li>
+            <li className="header__search-input">
               <input
                 onChange={handleValue}
                 type="text"
                 placeholder="search..."
               />
             </li>
-            <li>
+            <li className="header-logout-login-btn">
               {email ? (
                 <Link to="/auth">
                   <button onClick={handleLogout}>Logout</button>
