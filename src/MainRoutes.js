@@ -24,6 +24,7 @@ const MainRoutes = () => {
         <Route path="/edit" element={<EditProducts />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/cart/cashout" element={<CashOut />} />
+
       </Routes>
     </BrowserRouter>
   );

@@ -22,7 +22,6 @@ const ProductDetails = () => {
   }
 
   const {
-    handleLogout,
     user: { email },
     admin,
   } = useAuth();
@@ -33,15 +32,23 @@ const ProductDetails = () => {
     <div>
       {paintingDetails.name ? (
         <div className="details-wrapper">
+
           <div className="container">
             <div className="content">
               <div className="content-left">
+
+            <div className="container">
+            <div className="content-painting-details">
+
+                <div className="content-left">
+
                 <img src={paintingDetails.image} />
               </div>
               <div className="content-right">
                 <div>
                   <h1>{paintingDetails.artistsName}</h1>
                 </div>
+
                 <p>{paintingDetails.name}</p>
                 <div>{paintingDetails.description}</div>
                 <div>{paintingDetails.price}</div>
@@ -56,6 +63,23 @@ const ProductDetails = () => {
                   </>
                 ) : null}
               </div>
+
+                <div className="content-right">
+                    <div><h1>{paintingDetails.artistsName}</h1></div>
+                    <h2>{paintingDetails.name}</h2>
+                    <div><p>{paintingDetails.description}</p></div>
+                    <div><span>{paintingDetails.price}$</span></div>
+                    <button className="buy-btn">Buy</button> <br/>
+                    {admin ? <>
+                    <Link to="/">
+                    <button onClick={handleDelete}>Delete</button>
+                    </Link>
+                    <Link to="/edit">
+                    <button onClick={handleSave}>Edit</button>
+                    </Link> </> : null}
+                </div>
+            </div>
+
             </div>
           </div>
         </div>
@@ -65,5 +89,7 @@ const ProductDetails = () => {
     </div>
   );
 };
+
+
 
 export default ProductDetails;

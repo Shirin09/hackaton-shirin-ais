@@ -4,6 +4,8 @@ import MainCarousel from "../Carousel/Carousel";
 import "./Home.css";
 import RangeSlider from "./RangeSlider/RangeSlider";
 import Content from "../Content.js/Content.js";
+
+
 const Home = () => {
   return (
     <div className="wrapper">
