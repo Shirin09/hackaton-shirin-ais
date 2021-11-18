@@ -53,7 +53,7 @@ const Cart = () => {
               </tbody>
             </table>
             <h4>Total: {cart.totalPrice} </h4>
-            <button onClick={executeScroll} onClick={}>Buy</button>
+            <button onClick={executeScroll}>Buy</button>
           </div>
           <div ref={myRef} className="cashout-in-cart">
             <CashOut />
