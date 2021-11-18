@@ -22,7 +22,7 @@ const ProductDetails = () => {
   }
 
   const {
-    handleLogout,
+    // handleLogout,
     user: { email },
     admin,
   } = useAuth();
