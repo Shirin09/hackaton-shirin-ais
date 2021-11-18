@@ -8,6 +8,7 @@ import CarouselImg2 from "../../assets/img/carousel-img5.jpeg";
 const MainCarousel = () => {
   let style = {
     height: "700px",
+    
   };
 
   return (
