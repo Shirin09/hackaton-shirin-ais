@@ -6,19 +6,19 @@ import { productsContext } from "../../context/ProductContext";
 import "./ProductCard.css";
 
 const ProductDetails = () => {
-  const { getPaintingDetails, paintingDetails, getData, deletePainting } = useContext(productsContext);
+  const { getPaintingDetails, paintingDetails, getData, deletePainting } =
+    useContext(productsContext);
 
   let params = useParams().id;
   useEffect(() => {
     getPaintingDetails(params);
   }, []);
 
-
-  function handleSave(){
-      getData(paintingDetails, params)
+  function handleSave() {
+    getData(paintingDetails, params);
   }
-  function handleDelete(){
-      deletePainting(params)
+  function handleDelete() {
+    deletePainting(params);
   }
 
   const {
@@ -28,32 +28,36 @@ const ProductDetails = () => {
   } = useAuth();
   console.log({ email });
   console.log(admin);
-  
+
   return (
     <div>
       {paintingDetails.name ? (
         <div className="details-wrapper">
-            <div className="container">
+          <div className="container">
             <div className="content">
-
-                <div className="content-left">
+              <div className="content-left">
                 <img src={paintingDetails.image} />
+              </div>
+              <div className="content-right">
+                <div>
+                  <h1>{paintingDetails.artistsName}</h1>
                 </div>
-                <div className="content-right">
-                    <div><h1>{paintingDetails.artistsName}</h1></div>
-                    <p>{paintingDetails.name}</p>
-                    <div>{paintingDetails.description}</div>
-                    <div>{paintingDetails.price}</div>
-                    {admin ? <>
+                <p>{paintingDetails.name}</p>
+                <div>{paintingDetails.description}</div>
+                <div>{paintingDetails.price}</div>
+                {admin ? (
+                  <>
                     <Link to="/">
-                    <button onClick={handleDelete}>delete</button>
+                      <button onClick={handleDelete}>delete</button>
                     </Link>
                     <Link to="/edit">
-                    <button onClick={handleSave}>edit</button>
-                    </Link> </> : null}
-                </div>
+                      <button onClick={handleSave}>edit</button>
+                    </Link>{" "}
+                  </>
+                ) : null}
+              </div>
             </div>
-            </div>
+          </div>
         </div>
       ) : (
         <h1>loading</h1>
