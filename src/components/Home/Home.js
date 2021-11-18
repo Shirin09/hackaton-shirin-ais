@@ -3,7 +3,8 @@ import Products from "../Products/Products";
 import MainCarousel from "../Carousel/Carousel";
 import "./Home.css";
 import RangeSlider from "./RangeSlider/RangeSlider";
-import Content from "../Content.js/Content";
+import Content from "../Content.js/Content.js";
+
 
 const Home = () => {
   return (
