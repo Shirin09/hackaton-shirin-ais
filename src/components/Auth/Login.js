@@ -1,7 +1,6 @@
 import React from "react";
 import { useAuth } from "../../context/AuthContext";
 import "./Login.css";
-import { Link } from "react-router-dom";
 
 const Login = () => {
   const {
@@ -27,9 +26,7 @@ const Login = () => {
             type="text"
             required
             value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <p className="errorMsg">{emailError}</p>
           <label className="authLabel">Password</label>
@@ -48,11 +45,9 @@ const Login = () => {
           <div className="btnContainer">
             {hasAccount ? (
               <>
-              <Link to="/">
                 <button className="authButton" onClick={handleLogin}>
                   Sign In
                 </button>
-              </Link>
                 <p className="authP">
                   Don't have an account?
                   <span
@@ -65,11 +60,9 @@ const Login = () => {
               </>
             ) : (
               <>
-              <Link to="/">
                 <button className="authButton" onClick={handleSignUp}>
                   Sign up
                 </button>
-              </Link>
                 <p className="authP">
                   Have an account?
                   <span
