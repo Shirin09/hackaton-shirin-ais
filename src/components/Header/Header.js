@@ -8,10 +8,10 @@ import history from "../../helpers/history";
 import { productsContext } from "../../context/ProductContext";
 
 const Header = () => {
-  const [cardValue, setCardValue ] = useState();
+  const [cardValue, setCardValue] = useState();
 
   //history
-  const {getPaintings} =useContext(productsContext)
+  const { getPaintings } = useContext(productsContext);
 
   const {
     handleLogout,
@@ -21,12 +21,12 @@ const Header = () => {
   console.log({ email });
   console.log(admin);
 
-  function handleValue(e){
-    const search = new URLSearchParams(history.location.params)
-    search.set("q", e.target.value)
-    history.push(`${history.location.pathname}?${search.toString()}`)
-    setCardValue(e.target.value)
-    getPaintings(search.toString())
+  function handleValue(e) {
+    const search = new URLSearchParams(history.location.params);
+    search.set("q", e.target.value);
+    history.push(`${history.location.pathname}?${search.toString()}`);
+    setCardValue(e.target.value);
+    getPaintings(search.toString());
   }
 
   return (
@@ -39,22 +39,27 @@ const Header = () => {
             </Link>
           </div>
           <ul className="navbar__right">
-            <Link to="/">
-              <li>Home</li>
-            </Link>
-            <li>Artists</li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
             {admin ? (
-              <Link to="/add">
-                <li>Add Painting</li>
-              </Link>
+              <li>
+                <Link to="/add">Add Painting</Link>
+              </li>
             ) : null}
             <li>
-              <img src={CartIcon} alt="cart" />
+              <Link to="/cart">
+                <img src={CartIcon} alt="cart" />
+              </Link>
             </li>
-            <li>
-              <input onChange={handleValue} type="text" placeholder="search..." />
+            <li className="header__search-input">
+              <input
+                onChange={handleValue}
+                type="text"
+                placeholder="search..."
+              />
             </li>
-            <li>
+            <li className="header-logout-login-btn">
               {email ? (
                 <Link to="/auth">
                   <button onClick={handleLogout}>Logout</button>

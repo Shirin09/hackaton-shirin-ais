@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { productsContext } from "../../../context/ProductContext";
-import axios from "axios";
 
 const AddProduct = () => {
   const { addPaintings } = useContext(productsContext);
@@ -9,7 +8,7 @@ const AddProduct = () => {
   const [name, setName] = useState("");
   const [artistsName, setArtistsName] = useState("");
   const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("")
+  const [description, setDescription] = useState("");
 
   function handleAdd() {
     const product = {
@@ -17,7 +16,7 @@ const AddProduct = () => {
       name,
       artistsName,
       price,
-      description
+      description,
     };
     addPaintings(product);
   }
