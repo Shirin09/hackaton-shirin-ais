@@ -51,7 +51,7 @@ const Cart = () => {
                 </tbody>
               </table>
               <h4>Total: {cart.totalPrice} </h4>
-              <div>
+              <div className="buy-btn">
                 <Link to="/cart/cashout">
                   <button>Buy</button>
                 </Link>
