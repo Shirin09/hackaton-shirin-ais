@@ -59,12 +59,13 @@ const ProductsContextProvider = ({ children }) => {
   }
   async function deletePainting(id) {
     await axios.delete(`http://localhost:8000/paintings/${id}`);
+    getPaintings();
   }
 
-  // async function editPaintingDetails(obj) {
-  //   await axios.patch(`http://localhost:8000/paintings/${dataId}`, obj);
-  //   getPaintings();
-  // }
+  async function editPaintingDetails(obj) {
+    await axios.patch(`http://localhost:8000/paintings/${dataId}`, obj);
+    getPaintings();
+  }
 
   const addProductToCart = (product) => {
     console.log(product);
@@ -137,7 +138,6 @@ const ProductsContextProvider = ({ children }) => {
     localStorage.setItem("cart", JSON.stringify(newCart));
     getCart();
   }
-
   return (
     <productsContext.Provider
       value={{
@@ -149,7 +149,7 @@ const ProductsContextProvider = ({ children }) => {
         addPaintings,
         getPaintingDetails,
         getData,
-        // editPaintingDetails,
+        editPaintingDetails,
         deletePainting,
         addProductToCart,
         changeProductCount,
