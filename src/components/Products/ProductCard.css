@@ -124,7 +124,7 @@ span {
   justify-content: space-evenly;
   width: 100vw;
 }
-.content{
+.content-painting-details{
   display: flex;
   /* justify-content: space-evenly; */
   flex-wrap: wrap;
@@ -141,6 +141,31 @@ span {
   width: 40%;
   padding: 30px;
   box-sizing: border-box;
+}
+.content-right h2{
+  display: flex;
+  margin-left: 1vh;
+  margin: 5vh 2vh;
+}
+.content-right button{
+  font-size: 19px;
+    border: 1px solid #03b180;
+    width: 20vh;
+    height: 3vw;
+    border-radius:10px ;
+    background-color: rgb(247, 241, 241);
+    color: #03b180;
+    cursor: pointer;
+    margin-top: 2vw;
+}
+.content-right .buy-btn{
+  color: #fff;
+  background-color: #2cb18b;
+  font-size: 20px;
+  border-radius: 6px;
+  margin-top: 36px;
+  /* height: 3vw; */
+  width: 10vh;
 }
 .container{
   max-width: 1100px;
@@ -175,4 +200,22 @@ span {
 .paginationActive a {
   color: #fff;
   background-color: #00dd9f;
+}
+
+
+@media screen and (max-width: 2800px){
+  .content-right button{
+    height: 50px;
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 1030px){
+  .content-left{
+    width: 100%;
+
+  }
+  .content-right{
+    width: 100%;
+  }
 }

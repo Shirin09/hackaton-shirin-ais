@@ -1,23 +1,20 @@
-body{
-    background: url('https://catherineasquithgallery.com/uploads/posts/2021-02/1612530767_146-p-serii-fon-v-krapinku-173.jpg');
-}
-.add-text{
+.edit-details{
     display: flex;
     justify-content: center;
     max-width: 100%;
     box-sizing: border-box;
 }
-.add-text form{
+.edit-details form{
     margin: 100px auto;
 }
-.add-text input{
+.edit-details input{
     height: 3vw;
     width: 30vw;
     border-radius: 5px;
     border: 1px solid rgb(97, 204, 159);
     text-align: center;
 }
-.add-text button{
+.edit-details button{
     margin-top: 1em;
     width: 30vw;
     height: 3vw;
