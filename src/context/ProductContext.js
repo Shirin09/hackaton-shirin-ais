@@ -33,6 +33,7 @@ const ProductsContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
   const [data, setData] = useState({});
   const [dataId, setDataId] = useState();
+  const [cartItems, setCartItems] = useState([]);
 
   const getPaintings = async (params = "") => {
     //history
@@ -60,12 +61,13 @@ const ProductsContextProvider = ({ children }) => {
     await axios.delete(`http://localhost:8000/paintings/${id}`);
   }
 
-  async function editPaintingDetails(obj) {
-    await axios.patch(`http://localhost:8000/paintings/${dataId}`, obj);
-    getPaintings();
-  }
+  // async function editPaintingDetails(obj) {
+  //   await axios.patch(`http://localhost:8000/paintings/${dataId}`, obj);
+  //   getPaintings();
+  // }
 
   const addProductToCart = (product) => {
+    console.log(product);
     let cart = JSON.parse(localStorage.getItem("cart"));
     if (!cart) {
       cart = {
@@ -125,6 +127,17 @@ const ProductsContextProvider = ({ children }) => {
     getCart();
   }
 
+  function deleteProductFromCart(id) {
+    let toDelete = JSON.parse(localStorage.getItem("cart"));
+    let newCart = {
+      ...toDelete,
+      products: toDelete.products.filter((item) => item.item.id !== id),
+    };
+    console.log(newCart);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+    getCart();
+  }
+
   return (
     <productsContext.Provider
       value={{
@@ -136,11 +149,12 @@ const ProductsContextProvider = ({ children }) => {
         addPaintings,
         getPaintingDetails,
         getData,
-        editPaintingDetails,
+        // editPaintingDetails,
         deletePainting,
         addProductToCart,
         changeProductCount,
         getCart,
+        deleteProductFromCart,
       }}
     >
       {children}

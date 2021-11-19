@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useRef } from "react";
 import { productsContext } from "../../context/ProductContext";
 import CashOut from "./CashOut/CashOut";
 import "./Cart.css";
+
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
 const Cart = () => {
-  const { getCart, cart, changeProductCount } = useContext(productsContext);
+  const { getCart, cart, changeProductCount, deleteProductFromCart } =
+    useContext(productsContext);
   console.log(cart);
   useEffect(() => {
     getCart();
@@ -14,6 +16,9 @@ const Cart = () => {
   const myRef = useRef(null);
   const executeScroll = () => scrollToRef(myRef);
 
+  function deleteFromeCart(id) {
+    deleteProductFromCart(id);
+  }
   return (
     <div className="cart">
       {cart.products ? (
@@ -27,6 +32,7 @@ const Cart = () => {
                   <th>Price</th>
                   <th>Count</th>
                   <th>SubPrice</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -39,6 +45,7 @@ const Cart = () => {
                     <td>{elem.item.price}</td>
                     <td>
                       <input
+                        className="count-inp"
                         min="0"
                         value={elem.count}
                         type="number"
@@ -48,6 +55,14 @@ const Cart = () => {
                       />
                     </td>
                     <td>{elem.subPrice}</td>
+                    <td>
+                      <button
+                        className="delete-from-cart"
+                        onClick={() => deleteFromeCart(elem.item.id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -60,7 +75,7 @@ const Cart = () => {
           </div>
         </div>
       ) : (
-        <h1>loading</h1>
+        <h1>your cart is empty</h1>
       )}
     </div>
   );
