@@ -70,22 +70,23 @@ const Cart = () => {
                         Delete
                       </button>
                     </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <h4>Total: {cart.totalPrice} </h4>\
-            <div>
-              <Link to="/cart/cashout">
-                <button>Buy</button>
-              </Link>
+                </tbody>
+              </table>
+              <h4>Total: {cart.totalPrice} </h4>
+              <div className="buy-btn">
+                <Link to="/cart/cashout">
+                  <button>Buy</button>
+                </Link>
+              </div>
             </div>
           </div>
+
         </div>
       ) : (
         <h1>your cart is empty</h1>
       )}
     </div>
+
   );
 };
 
