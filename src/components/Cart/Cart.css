@@ -57,4 +57,21 @@ tr {
   background-color: #00dd9f;
   cursor: pointer;
   outline: none;
+
+}
+.count-inp {
+  width: 3vw;
+}
+.delete-from-cart {
+  width: 5vw;
+  height: 20px;
+  background-color: rgb(241, 243, 241);
+  color: #03b180;
+  border: 1px solid #03b180;
+  border-radius: 4px;
+
+}
+
+.delete-from-cart:hover{
+  color: #157e60;
 }

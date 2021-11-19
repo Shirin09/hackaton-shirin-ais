@@ -5,9 +5,17 @@ import { useAuth } from "../../context/AuthContext";
 import { productsContext } from "../../context/ProductContext";
 import "./ProductCard.css";
 
-const ProductDetails = () => {
-  const { getPaintingDetails, paintingDetails, getData, deletePainting } =
-    useContext(productsContext);
+
+const ProductDetails = ({ item }) => {
+  const {
+    getPaintingDetails,
+    paintingDetails,
+    getData,
+    deletePainting,
+    addProductToCart,
+  } = useContext(productsContext);
+
+  
 
   let params = useParams().id;
   useEffect(() => {
@@ -34,13 +42,8 @@ const ProductDetails = () => {
         <div className="details-wrapper">
 
           <div className="container">
-            <div className="content">
-              <div className="content-left">
-
-            <div className="container">
             <div className="content-painting-details">
-
-                <div className="content-left">
+              <div className="content-left">
 
                 <img src={paintingDetails.image} />
               </div>
@@ -48,37 +51,32 @@ const ProductDetails = () => {
                 <div>
                   <h1>{paintingDetails.artistsName}</h1>
                 </div>
-
-                <p>{paintingDetails.name}</p>
-                <div>{paintingDetails.description}</div>
-                <div>{paintingDetails.price}</div>
+                <h2>{paintingDetails.name}</h2>
+                <div>
+                  <p>{paintingDetails.description}</p>
+                </div>
+                <div>
+                  <span>{paintingDetails.price}$</span>
+                </div>
+                <button
+                  className="buy-btn"
+                  onClick={() => addProductToCart(paintingDetails)}
+                >
+                  Buy
+                </button>{" "}
+                <br />
                 {admin ? (
                   <>
+
                     <Link to="/">
-                      <button onClick={handleDelete}>delete</button>
+                      <button onClick={handleDelete}>Delete</button>
                     </Link>
                     <Link to="/edit">
-                      <button onClick={handleSave}>edit</button>
+                      <button onClick={handleSave}>Edit</button>
                     </Link>{" "}
                   </>
                 ) : null}
               </div>
-
-                <div className="content-right">
-                    <div><h1>{paintingDetails.artistsName}</h1></div>
-                    <h2>{paintingDetails.name}</h2>
-                    <div><p>{paintingDetails.description}</p></div>
-                    <div><span>{paintingDetails.price}$</span></div>
-                    <button className="buy-btn">Buy</button> <br/>
-                    {admin ? <>
-                    <Link to="/">
-                    <button onClick={handleDelete}>Delete</button>
-                    </Link>
-                    <Link to="/edit">
-                    <button onClick={handleSave}>Edit</button>
-                    </Link> </> : null}
-                </div>
-            </div>
 
             </div>
           </div>
@@ -89,7 +87,5 @@ const ProductDetails = () => {
     </div>
   );
 };
-
-
 
 export default ProductDetails;
