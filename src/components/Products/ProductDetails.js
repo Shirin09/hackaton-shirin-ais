@@ -5,6 +5,7 @@ import { useAuth } from "../../context/AuthContext";
 import { productsContext } from "../../context/ProductContext";
 import "./ProductCard.css";
 
+
 const ProductDetails = ({ item }) => {
   const {
     getPaintingDetails,
@@ -39,9 +40,11 @@ const ProductDetails = ({ item }) => {
     <div>
       {paintingDetails.name ? (
         <div className="details-wrapper">
+
           <div className="container">
             <div className="content-painting-details">
               <div className="content-left">
+
                 <img src={paintingDetails.image} />
               </div>
               <div className="content-right">
@@ -64,6 +67,7 @@ const ProductDetails = ({ item }) => {
                 <br />
                 {admin ? (
                   <>
+
                     <Link to="/">
                       <button onClick={handleDelete}>Delete</button>
                     </Link>
@@ -73,6 +77,7 @@ const ProductDetails = ({ item }) => {
                   </>
                 ) : null}
               </div>
+
             </div>
           </div>
         </div>

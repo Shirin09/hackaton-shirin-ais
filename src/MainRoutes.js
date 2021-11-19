@@ -6,9 +6,9 @@ import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import ProductDetails from "./components/Products/ProductDetails";
 import { useAuth } from "./context/AuthContext";
-
 import EditProducts from "./components/AdminPanel/EditProducts/EditProducts";
 import Cart from "./components/Cart/Cart";
+import CashOut from "./components/Cart/CashOut/CashOut";
 
 const MainRoutes = () => {
   const { user } = useAuth();
@@ -23,6 +23,8 @@ const MainRoutes = () => {
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/edit" element={<EditProducts />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/cart/cashout" element={<CashOut />} />
+
       </Routes>
     </BrowserRouter>
   );

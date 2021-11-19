@@ -3,7 +3,11 @@ import { productsContext } from "../../context/ProductContext";
 import CashOut from "./CashOut/CashOut";
 import "./Cart.css";
 
+
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+
+import { Link } from "react-router-dom";
+
 
 const Cart = () => {
   const { getCart, cart, changeProductCount, deleteProductFromCart } =
@@ -13,17 +17,20 @@ const Cart = () => {
     getCart();
   }, []);
 
+
   const myRef = useRef(null);
   const executeScroll = () => scrollToRef(myRef);
 
   function deleteFromeCart(id) {
     deleteProductFromCart(id);
   }
+
+
   return (
     <div className="cart">
       {cart.products ? (
         <div>
-          <div className="cart-details">
+          <div className="cart">
             <table>
               <thead>
                 <tr>
@@ -67,11 +74,12 @@ const Cart = () => {
                 ))}
               </tbody>
             </table>
-            <h4>Total: {cart.totalPrice} </h4>
-            <button onClick={executeScroll}>Buy</button>
-          </div>
-          <div ref={myRef} className="cashout-in-cart">
-            <CashOut />
+            <h4>Total: {cart.totalPrice} </h4>\
+            <div>
+              <Link to="/cart/cashout">
+                <button>Buy</button>
+              </Link>
+            </div>
           </div>
         </div>
       ) : (
