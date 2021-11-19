@@ -8,7 +8,7 @@ const Products = () => {
 
   const [page, setPage] = useState(0);
 
-  const pageCount = Math.ceil(paintings.length / 4);
+  const pageCount = Math.ceil(paintings.length / 6);
 
   useEffect(() => {
     getPaintings();
@@ -18,7 +18,7 @@ const Products = () => {
     setPage(selected);
   }
 
-  const productsPerPage = 4;
+  const productsPerPage = 6;
 
   const pageVisited = page * productsPerPage;
 
